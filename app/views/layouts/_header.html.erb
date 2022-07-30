@@ -72,7 +72,7 @@
               To: "transform opacity-0 scale-95"
           -->
           <div  id="menu-dropdown-items" 
-                class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none" 
+                class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none divide-y divide-gray-100" 
                 role="menu" 
                 aria-orientation="vertical" 
                 aria-labelledby="user-menu-button" 
@@ -85,11 +85,27 @@
                 data-transition-leave-end="transform opacity-0 scale-95"
                 >
             <!-- Active: "bg-gray-100", Not Active: "" -->
-            <a href="#" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+            <div>
+              <a href="#" id="user-menu-item-0" 
+                data-header-target="userAuthLink"            
+                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
+                Sign up
+              </a>
 
-            <a href="#" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+              <a href="#" id="user-menu-item-1" 
+              data-header-target="userAuthLink"
+              role="menuitem" tabindex="-1"
+              class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
+                Sign in
+              </a>
+            </div>
 
-            <a href="#" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+            <div>
+              <a href="#" id="user-menu-item-0" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Host your Home </a>
+              <a href="#" id="user-menu-item-1" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Host an experience</a>
+              <a href="#" id="user-menu-item-1" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Help</a>
+            </div>
+
           </div>
         </div>
       </div>
@@ -125,3 +141,5 @@
     </div>
   </nav>
 </header>
+
+<%= render "shared/modal" %>
