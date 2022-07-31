@@ -18,7 +18,7 @@
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
             </div>
-            <input id="search" name="search" class="block w-full border border-transparent rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 focus:placeholder-gray-500 sm:text-sm" placeholder="Search" type="search">
+            <input id="search" name="search" class="block w-full border border-transparent rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 focus:placeholder-gray-500 sm:text-sm hover:bg-gray-200" placeholder="Search" type="search">
           </div>
         </div>
       </div>
@@ -28,7 +28,9 @@
           <span class="sr-only">Open menu</span>
           <!--
             Icon when menu is closed.
+
             Heroicon name: outline/menu
+
             Menu open: "hidden", Menu closed: "block"
           -->
           <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -36,7 +38,9 @@
           </svg>
           <!--
             Icon when menu is open.
+
             Heroicon name: outline/x
+
             Menu open: "block", Menu closed: "hidden"
           -->
           <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -64,6 +68,7 @@
 
           <!--
             Dropdown menu, show/hide based on menu state.
+
             Entering: "transition ease-out duration-100"
               From: "transform opacity-0 scale-95"
               To: "transform opacity-100 scale-100"
@@ -71,41 +76,35 @@
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <div  id="menu-dropdown-items" 
-                class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none divide-y divide-gray-100" 
-                role="menu" 
-                aria-orientation="vertical" 
-                aria-labelledby="user-menu-button" 
-                tabindex="-1"
-                data-transition-enter="transition ease-out duration-100"
-                data-transition-enter-start="transform opacity-0 scale-95"
-                data-transition-enter-end="transform opacity-100 scale-100"
-                data-transition-leave="transition ease-in duration-75"
-                data-transition-leave-start="transform opacity-100 scale-100"
-                data-transition-leave-end="transform opacity-0 scale-95"
-                >
+          <div
+            class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none divide-y divide-gray-100"
+            id="menu-dropdown-items"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="user-menu-button"
+            tabindex="-1"
+            data-transition-enter="transition ease-out duration-100"
+            data-transition-enter-start="transform opacity-0 scale-95"
+            data-transition-enter-end="transform opacity-100 scale-100"
+            data-transition-leave="transition ease-in duration-75"
+            data-transition-leave-start="transform opacity-100 scale-100"
+            data-transition-leave-end="transform opacity-0 scale-95"
+          >
             <!-- Active: "bg-gray-100", Not Active: "" -->
-            <div>
-              <a href="#" id="user-menu-item-0" 
-                data-header-target="userAuthLink"            
-                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
-                Sign up
-              </a>
-
-              <a href="#" id="user-menu-item-1" 
-              data-header-target="userAuthLink"
-              role="menuitem" tabindex="-1"
-              class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
-                Sign in
-              </a>
+            <div class="py-1" role="none">
+              <% if user_signed_in? %>
+                <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+              <% else %>
+                <a href="#" data-header-target="userAuthLink" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Sign Up</a>
+                <a href="#" data-header-target="userAuthLink" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Log in</a>
+              <% end %>
             </div>
 
-            <div>
-              <a href="#" id="user-menu-item-0" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Host your Home </a>
-              <a href="#" id="user-menu-item-1" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Host an experience</a>
-              <a href="#" id="user-menu-item-1" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Help</a>
+            <div class="py-1" role="none">
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Host your home</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Host an experience</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Help</a>
             </div>
-
           </div>
         </div>
       </div>
@@ -142,4 +141,4 @@
   </nav>
 </header>
 
-<%= render "shared/modal", modal_content: "home/user_auth_form"%>
+<%= render "shared/modal", modal_content: "home/user_auth_form" %>
