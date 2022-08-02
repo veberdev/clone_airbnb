@@ -3,10 +3,9 @@ FactoryBot.define do
     name { "MyString" }
     headline { "MyString" }
     description { "MyText" }
-    city { "MyString" }
-    state { "MyString" }
-    country { "MyString" }
-    address_1 { "MyString" }
-    address_2 { "MyString" }
+    address_1 { Faker::Address.street_address }
+    city { Faker::Address.city }
+    state { Faker::Address.state}
+    country { Faker::Address.country }
   end
 end
