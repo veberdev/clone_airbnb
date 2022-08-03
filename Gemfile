@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.0"
 gem "geocoder"
+gem "jsonapi-serializer"
 gem "money-rails", "~>1.12"
 gem "image_processing", "~> 1.2"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
