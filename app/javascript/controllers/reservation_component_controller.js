@@ -8,6 +8,8 @@ export default class extends Controller {
     const checkinPicker = new Datepicker(this.checkinTarget, {
       minDate: this.element.dataset.defaultCheckinDate
     });
+    console.log("reservation component controller connected")
+    console.log("abc dataset: ", this.element.dataset.abc)
 
     const checkoutPicker = new Datepicker(this.checkoutTarget, {
       minDate: this.element.dataset.defaultCheckoutDate
