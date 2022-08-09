@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  resources :properties, only: :show
 
   namespace :api do
     get "/users_by_email" => "users_by_emails#show", as: :users_by_email
 
     resources :favorites, only: [:create, :destroy]
+  end
+
+  resources :properties, only: :show do
+    resources :reservations, only: :new, controller: "properties/reservations"
   end
 end
