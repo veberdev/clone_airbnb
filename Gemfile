@@ -22,10 +22,11 @@ gem "sassc-rails"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "rspec-rails", "~> 5.1", ">= 5.1.2"
+  gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
   gem "pry-rails"
+  gem "rspec-rails", "~> 5.1", ">= 5.1.2"
 end
 
 group :development do
