@@ -7,6 +7,7 @@ export default class extends Controller {
   static targets = ['checkin', 'checkout', 'numOfNights', 'nightlyTotal', 'serviceFee', 'total'];
 
   connect() {
+
     const checkinPicker = new Datepicker(this.checkinTarget, {
       minDate: this.element.dataset.defaultCheckinDate
     });
