@@ -5,6 +5,5 @@ class PaymentsController < ApplicationController
 
   def index
     @payments = current_user.payments.includes(reservation: :property)
-    @payment = current_user
   end
 end
