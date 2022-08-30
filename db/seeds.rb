@@ -6,20 +6,18 @@ end
 
 me = User.create(email: "chris@typefast.co", password: "password")
 me.profile.update(first_name: "Chris", last_name: "Jeon")
-me.picture.attach(io: user_pictures[0], filename: "#{me.full_name}.jpg")
+me.profile.picture.attach(io: user_pictures[0], filename: "#{me.full_name}.jpg")
 
-veber = User.create(email: "veber@dev.com", password: "102030")
-me.profile.update(first_name: "Weslley", last_name: "Lucas")
-veber.picture.attach(io: URI.parse(Faker::LoremFlickr.image).open, filename: "#{veber.full_name}.jpg")
 
 5.times do |i|
   user = User.create(email: Faker::Internet.email, password: "password")
   user.profile.update(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-  user.picture.attach(io: user_pictures[i + 1], filename: "#{user.full_name}.jpg")
+  user.profile.picture.attach(io: user_pictures[i + 1], filename: "#{user.full_name}.jpg")
 end
 
 10.times do |i|
   property = Property.create!(
+    user: me,
     name: Faker::Lorem.word,
     headline: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraphs(number: 30).join(" "),
@@ -36,3 +34,4 @@ end
     Review.create(reviewable: property, rating: (1..5).to_a.sample, title: Faker::Lorem.word, body: Faker::Lorem.paragraph, user: User.all.sample)
   end
 end
+

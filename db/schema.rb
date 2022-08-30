@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_211012) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_102609) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,7 +103,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_211012) do
     t.string "price_currency"
     t.integer "reviews_count", default: 0, null: false
     t.decimal "average_rating", default: "0.0", null: false
+    t.bigint "user_id", null: false
     t.index ["latitude", "longitude"], name: "index_properties_on_latitude_and_longitude"
+    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -130,12 +132,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_211012) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "testes", force: :cascade do |t|
-    t.decimal "average_rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -156,6 +152,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_211012) do
   add_foreign_key "favorites", "users"
   add_foreign_key "payments", "reservations"
   add_foreign_key "profiles", "users"
+  add_foreign_key "properties", "users"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "users"
