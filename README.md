@@ -1,24 +1,42 @@
-# README
+# AirBnb Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+This app was developed based upon chrisjeon course (Let's build an Airbnb clone with Ruby on Rails). It uses Ruby 3.0.0 and Rails ~> 7.0.3.
 
-* Ruby version
+## What does the course teaches:
 
-* System dependencies
+- TDD using RSpec
 
-* Configuration
+- Consume API
 
-* Database creation
+- interact with a payment gateway (in this case Stripe)
 
-* Database initialization
+- Ruby & Ruby on Rails
 
-* How to run the test suite
+- Javascript
 
-* Services (job queues, cache servers, search engines, etc.)
+- StimulusJS
 
-* Deployment instructions
+- Tailwind CSS
 
-* ...
+## How to use/interact with this app:
+
+Create a database and run the seed file
+
+`rails db:create db:migrate db:seed`
+
+It will provide a user with loguin
+
+`user@user.com`
+`password`
+
+On this point, the database has lot of data to demonstrate how the application works.
+
+## Tests
+
+The project uses Rspec for testing. To run it run in the root project
+
+`bundle exec rspec`
+
+It will run all the test suite.
